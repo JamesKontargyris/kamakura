@@ -1,0 +1,10 @@
+{
+	"name": "automatesystems",
+	"version": "0.0.1",
+	"devDependencies": {
+		"gulp": "^3.6.0",
+		"gulp-compass": "^1.1.8",
+		"gulp-clean": "^0.2.4",
+		"gulp-ruby-sass": "^0.4.1"
+	}
+}

@@ -1,0 +1,124 @@
+// _mixins.scss: any mixins created for this project.
+
+@mixin background-img($imgpath, $x:0, $y:0, $repeat: no-repeat) {
+    background: {
+        image: url($imgpath);
+        position: $x $y;
+        repeat: $repeat;
+    }
+}
+
+@mixin primary-but {
+	cursor:pointer;
+	border:1px solid $off-white;
+	padding:($v-rhythm / 2) 10px;
+	font-weight:$font-bold;
+	line-height:$v-rhythm;
+	color:$off-white;
+	background:rgba($mid-blue, 0.2);
+	@include border-radius(5px);
+	@include transition-property(all);
+  	@include transition-duration(0.5s);
+	&:hover {
+		// opacity:0.7;
+		background:rgba($mid-blue, 0.5);
+		padding-left:30px;
+		padding-right:30px;
+	}
+}
+
+@mixin secondary-but {
+	cursor:pointer;
+	border:0;
+	padding:($v-rhythm / 4) 10px;
+	margin-bottom:$v-rhythm / 4;
+	font-weight:$font-regular;
+	// line-height:1.5;
+	@include font-size(14);
+	color:$soft-black;
+	@include border-radius(5px);
+	text-align:center;
+	border-top: 2px solid white;
+	border-bottom: 1px solid rgba($soft-black, 0.6);
+	@include light-grad(darken($off-white, 10%), top, 20%);
+	&:hover {
+		opacity:0.9;
+	}
+}
+
+@mixin dark-grad($color: $mid-blue, $position: top, $percentage: 7%) {
+	background-color:$color;
+	@include background(linear-gradient($position, $color, darken($color, $percentage)));
+}
+
+@mixin light-grad($color: $mid-blue, $position: top, $percentage: 7%) {
+	background-color:$color;
+	@include background(linear-gradient($position, lighten($color, $percentage), $color));
+}
+
+@mixin legibility {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+// Fonts
+@mixin font-size($sizeValue: 16) {
+  font-size: $sizeValue + px;
+  font-size: ($sizeValue / 16) + rem;
+}
+
+// opacity
+@mixin opacity($opacity) {
+    filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+    opacity: $opacity;
+}
+
+// input placeholder
+@mixin placeholder($color : $primary_color) {
+	&::-webkit-input-placeholder {
+		color: $color;
+	}
+	&:-moz-placeholder {
+		color: $color;
+	}
+	&:-ms-input-placeholder {
+		color: $color;
+	}
+}
+
+// position
+@mixin position ($position: relative, $coordinates: 0 0 0 0) {
+	@if type-of($position) == list {
+		$coordinates: $position;
+		$position: relative;
+	}
+	$top: nth($coordinates, 1);
+	$right: nth($coordinates, 2);
+	$bottom: nth($coordinates, 3);
+	$left: nth($coordinates, 4);
+	position: $position;
+	@if $top == auto {
+		top: $top;
+	}
+	@else if not(unitless($top)) {
+		top: $top;
+	}
+	@if $right == auto {
+		right: $right;
+	}
+	@else if not(unitless($right)) {
+		right: $right;
+	}
+	@if $bottom == auto {
+		bottom: $bottom;
+	}
+	@else if not(unitless($bottom)) {
+		bottom: $bottom;
+	}
+	@if $left == auto {
+		left: $left;
+	}
+	@else if not(unitless($left)) {
+		left: $left;
+	}
+}

@@ -1,0 +1,117 @@
+//	_base.scss: styles that will affect all pages (heading tags, small tags, etc.)
+
+// Fonts
+@import url(http://fonts.googleapis.com/css?family=Oswald:300,400,700);
+
+* {
+	@include box-sizing(border-box);
+}
+
+html, body {
+	height:100%;
+ }
+ html {
+	font-size:15px;
+ }
+body {
+	// margin-top:$v-rhythm / 4;
+	font-family: $font-family;
+	color: $soft-black;
+	@include font-size(14);
+	line-height: 2;
+}
+a {
+	color:$mid-blue;
+	text-decoration:none;
+	&:hover {
+		color:darken($mid-blue, 20%);
+	}
+}
+hr {
+	@include clearfix();
+	height:1px;
+	border:0;
+	background-color:$off-white;
+	color:$off-white;
+	margin:$v-rhythm 0;
+	&.hide-small {
+		@include breakpoint($s-max) {
+			display:none;
+		}
+	}
+}
+
+img {
+	// width:100%;
+}
+
+h1, h2, h3, h4, h5 {
+	margin-bottom:$v-rhythm * 2;
+	font-family:$font-family-headings;
+	&.white {
+		color:white;
+	}
+	&.black {
+		color:$soft-black;
+	}
+	.break-l {
+		@include breakpoint($l) {
+			display:block;
+		}
+	}
+	.break-m {
+		@include breakpoint($m-l) {
+			display:block;
+		}
+	}
+	.break-s {
+		@include breakpoint($s-max) {
+			display:block;
+		}
+	}
+}
+
+h1 {
+	font-weight:$font-regular;
+	line-height:1.2;
+	@include text-shadow($soft-black 0px 1px 10px);
+	@include font-size(48);
+	@include breakpoint($m-max) {
+		@include font-size(24);
+	}
+	line-height:1.5;
+	padding:0 20px;
+	text-align:center;
+	color:white;
+}
+
+h2 {
+	text-transform: uppercase;
+	line-height:1.2;
+	font-weight:$font-light;
+	@include font-size(30);
+	text-align: center;
+	color:$mid-blue;
+}
+
+h3 {
+	font-weight:$font-bold;
+	line-height:1.2;
+	text-align:center;
+	color:$mid-blue;
+	@include font-size(30);
+	@include breakpoint($l) {
+		text-align:right;
+		@include font-size(46);
+	}
+}
+h4 {
+	margin:0;
+	@include font-size(20);
+	font-weight:$font-bold;
+	text-transform: uppercase;
+}
+
+p {
+	margin-bottom:$v-rhythm;
+}
